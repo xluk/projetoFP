@@ -5,11 +5,11 @@ https://www.facebook.com/thexluk/
 """-->
 {% extends 'base.html' %}
 
-{% block titulo %}Pessoas{% endblock titulo %}
+{% block titulo %}Caixas{% endblock titulo %}
 
 {% block conteudo %}
 <div align="center"> 
-  <form role="form" method="POST" action="/pessoas/pesquisar/">{% csrf_token %}
+  <form role="form" method="POST" action="/caixas/pesquisar/">{% csrf_token %}
     <div class="form-group">
       <div class="row">
         <div class="col-md-10">
@@ -22,7 +22,7 @@ https://www.facebook.com/thexluk/
     </div>  
   </form>
   
-  <a href="/pessoas/adicionar/" class="btn btn-warning">Cadastra Pessoa</a>
+  <a href="/caixas/adicionar/" class="btn btn-warning">Cadastra Conta</a>
 
 </div>
 <hr>
@@ -30,17 +30,23 @@ https://www.facebook.com/thexluk/
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>E-Mail</th>
-            <th>Telefone</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>PagSeguro</th>
+            <th>Data</th>
+          	<th>Pessoa</th>
           </tr>
         </thead>
         <tbody>
-        {% for pessoa in pessoas %}
+        {% for caixa in caixas %}
           <tr>
-            <td><a href="/pessoas/editar/{{ pessoa.pk }}">{{ pessoa.nome }}</a></td>
-            <td>{{ pessoa.email }}</td>
-            <td>{{ pessoa.telefone }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}">{{ caixa.descricao }}</a></td>
+            <td>{{ caixa.tipo }}</td>
+            <td>{{ caixa.valor }}</td>
+            <td>{{ caixa.pagseguro }}</td>
+            <td>{{ caixa.data }}</td>
+            <td>{{ caixa.pessoa.nome }}</td>
           </tr>
         {% endfor %}  
         </tbody>
